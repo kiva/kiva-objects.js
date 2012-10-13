@@ -11,7 +11,7 @@
 	 * Creates a new Constructor function that "inherits" from "this".
 	 *
 	 * @param args
-	 * @return Constructor
+	 * @return {*}
 	 */
 	kiva.Object.extend = function (args) {
 		var Child = args && args.name
@@ -39,11 +39,15 @@
 	};
 
 
-
+	/**
+	 *
+	 * @type {Object}
+	 */
 	kiva.Object.prototype = {
 
 		/**
 		 *
+		 * @param args
 		 * @returns jQuery.Deferred
 		 */
 		fetch: function (args) {
