@@ -1,0 +1,27 @@
+{
+	"browser": true
+	, "bitwise": true
+	, "curly": true
+    , "eqeqeq": false
+    , "immed": true
+    , "latedef": true
+    , "newcap": true
+    , "node": true
+	, "noarg": true
+    , "noempty": true
+    , "nonew": true
+	, "smarttabs": true
+    , "strict": true
+    , "trailing": true
+	, "undef": true
+	, "laxbreak": true
+	, "laxcomma": true
+	, "validthis": true
+	, "jquery": true
+	, "predef":
+		[
+			"$"
+			, "kv"
+			, "$script"
+		]
+}
