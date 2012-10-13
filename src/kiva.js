@@ -1,4 +1,4 @@
-(function ($, global, undefined) {
+(function (global) {
 	'use strict';
 
 	var  version = 1
@@ -9,9 +9,9 @@
 	, zipHost = 'zip.kiva.org'
 
 	, kivaPath = '/v'
-	, zipPath = '/v'
+	, zipPath = '/v';
 
-	, kiva = {
+	global.kiva = {
 		ver: version
 		, kVer: kivaApiVersion
 		, zVer: zipApiVersion
@@ -19,6 +19,4 @@
 		, zipSrc: 'http://' + zipHost + zipPath + zipApiVersion
 	};
 
-	global.kiva = kiva;
-
-}(jQuery, this));
+}(this));
