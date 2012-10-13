@@ -1,6 +1,6 @@
 (function () {
 
-	var loans = kiva.Loans({}).fetch();
+	var loans = kiva.Loans().create();
 
 
 
