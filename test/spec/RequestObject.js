@@ -1,12 +1,19 @@
 describe('.RequestObject', function () {
 
-	it('creates a pointer (__proto__) directly to the parents prototype', function () {
+	it('stores a reference to the Kiva and Kiva Zip API', function () {
+		expect(typeof kiva.RequestObject.prototype.kivaSrc == 'string').toBe(true);
+		expect(typeof kiva.RequestObject.prototype.zipSrc == 'string').toBe(true);
+	});
+
+
+	xit('creates a pointer (__proto__) directly to the parents prototype', function () {
 		var NewConstructor = kiva.Object.extend({fetch: 'overrideValue'});
 
 		expect(NewConstructor.prototype.__proto__.fetch).not.toBe('overrideValue');
 	});
 
-	it('leaves a pointer directly to the parents prototype', function () {
+
+	xit('leaves a pointer directly to the parents prototype', function () {
 		var NewConstructor
 		, obj = kiva.Object.create({fetch: 'overrideValue'});
 
@@ -25,18 +32,8 @@ describe('.RequestObject', function () {
 
 	describe('instance method: .fetch()', function () {
 
-		it ('Throws an exception when .kivaSrc or .zipSrc are not defined on the instance', function () {
-			var obj = kiva.Object.create()
-			, ajaxSpy = spyOn($, 'ajax');
-
-			expect(function () {
-				obj.fetch();
-			}).toThrow();
-		});
-
-
 		it ('Makes a $.ajax call and returns the jqXHR results', function () {
-			var obj = kiva.Object.create()
+			var obj = kiva.RequestObject.create()
 			, ajaxSpy = spyOn($, 'ajax').andReturn('ajaxResults')
 			, ajaxResults;
 

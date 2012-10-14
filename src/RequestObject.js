@@ -2,16 +2,17 @@
 
 	kiva.RequestObject = kiva.Object.extend({
 
+		kivaSrc: kiva.kivaSrc
+
+		, zipSrc: kiva.zipSrc
+
+
 		/**
 		 *
 		 * @param args
 		 * @returns jQuery.Deferred
 		 */
-		fetch: function (args) {
-			if (! (this.kivaSrc || this.zipSrc)) {
-				throw 'Error: You must define a kivaSrc and/or zipSrc'
-			}
-
+		, fetch: function (args) {
 			var ids
 			, action
 			, url = this.kivaSrc;
