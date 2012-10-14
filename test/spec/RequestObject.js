@@ -7,26 +7,20 @@ describe('.RequestObject', function () {
 
 
 	xit('creates a pointer (__proto__) directly to the parents prototype', function () {
-		var NewConstructor = kiva.Object.extend({fetch: 'overrideValue'});
 
-		expect(NewConstructor.prototype.__proto__.fetch).not.toBe('overrideValue');
 	});
 
 
 	xit('leaves a pointer directly to the parents prototype', function () {
-		var NewConstructor
-		, obj = kiva.Object.create({fetch: 'overrideValue'});
 
-		// Simple test
-		expect(obj.__proto__.fetch).not.toBeDefined();
 
-		// Now make sure it also works when creating an object that has been extended
-		NewConstructor = kiva.Object.extend({fetch: 'overrideValue'});
-		obj = NewConstructor.create();
+	});
 
-		expect(obj.__proto__.fetch).toBeDefined();
-		expect(obj.__proto__.fetch).not.toBe('overrideValue');
 
+	it('sets some default properties', function () {
+		var myObj = kiva.RequestObject.create();
+
+		expect($.isArray(myObj.members)).toBe(true);
 	});
 
 

@@ -9,7 +9,6 @@
 
 	/**
 	 * Creates a new Constructor function that "inherits" from "this".
-	 * The new args are added to the prototype of the new Constructor
 	 *
 	 * @param args
 	 * @return {*}
@@ -19,7 +18,7 @@
 			? new Function ('return function ' + args.name + ' () {}')()
 			: function () {};
 
-		Child.prototype = $.extend(true, {}, this.prototype, args);
+		Child.prototype = $.extend({}, this.prototype, args);
 		Child.prototype.__proto__ = this.prototype;
 		Child._super = this;
 		Child = $.extend(Child, this);
@@ -34,10 +33,9 @@
 	 * @param args
 	 */
 	kiva.Object.create = function (args) {
-		var newObj = $.extend(true, {}, this.prototype);
+		var newObj = new this();
 
 		return $.extend(newObj, args);
 	};
-
 
 }(jQuery));

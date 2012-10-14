@@ -7,6 +7,9 @@
 		, zipSrc: kiva.zipSrc
 
 
+		, members: []
+
+
 		/**
 		 *
 		 * @param args
