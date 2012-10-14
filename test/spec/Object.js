@@ -14,6 +14,10 @@ describe('.Object', function () {
 		});
 
 
+		it('creates a pointer (__proto__) directly to the parents prototype', function () {
+		});
+
+
 		it('returns a new Constructor function who\'s prototype gets extended with the supplied arguments', function () {
 			var NewConstructor = kiva.Object.extend({prop1: 'uno', prop2: 'dos'});
 
@@ -27,7 +31,7 @@ describe('.Object', function () {
 		it('returns an object instance of the current object', function () {
 			var myObj = kiva.Object.create();
 
-			expect(Object.getPrototypeOf(myObj)).toEqual(kiva.Object.prototype);
+			expect(myObj).toEqual(kiva.Object.prototype);
 		});
 
 
@@ -41,38 +45,14 @@ describe('.Object', function () {
 		});
 
 
-		it('sets some default properties', function () {
+		it('leaves a pointer directly to the parents prototype', function () {
+		});
+
+		// @todo opted to remove this from the .create() routine, it seems it should go higher up in the chain
+		xit('sets some default properties', function () {
 			var myObj = kiva.Object.create();
 
 			expect($.isArray(myObj.members)).toBe(true);
 		})
-	});
-
-
-	describe('instance method: .fetch()', function () {
-
-		it ('Throws an exception when .kivaSrc or .zipSrc are not defined on the instance', function () {
-			var obj = kiva.Object.create()
-			, ajaxSpy = spyOn($, 'ajax');
-
-			expect(function () {
-				obj.fetch();
-			}).toThrow();
-		});
-
-
-		it ('Makes a $.ajax call and returns the jqXHR results', function () {
-			var obj = kiva.Object.create()
-			, ajaxSpy = spyOn($, 'ajax').andReturn('ajaxResults')
-			, ajaxResults;
-
-			obj.kivaSrc = kiva.kivaSrc + '/loans';
-			obj.zipSrc = kiva.zipSrc + '/loans';
-
-			ajaxResults = obj.fetch();
-
-			expect(ajaxSpy).toHaveBeenCalled();
-			expect(ajaxResults).toBe('ajaxResults')
-		});
 	});
 });

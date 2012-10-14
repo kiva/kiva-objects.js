@@ -9,6 +9,7 @@
 
 	/**
 	 * Creates a new Constructor function that "inherits" from "this".
+	 * The new args are added to the prototype of the new Constructor
 	 *
 	 * @param args
 	 * @return {*}
@@ -18,7 +19,8 @@
 			? new Function ('return function ' + args.name + ' () {}')()
 			: function () {};
 
-		Child.prototype = $.extend({}, this.prototype, args);
+		Child.prototype = $.extend(true, {}, this.prototype, args);
+		Child.prototype.__proto__ = this.prototype;
 		Child._super = this;
 		Child = $.extend(Child, this);
 
@@ -32,61 +34,10 @@
 	 * @param args
 	 */
 	kiva.Object.create = function (args) {
-		var newObj = new this();
+		var newObj = $.extend(true, {}, this.prototype);
 
-		newObj.members = [];
 		return $.extend(newObj, args);
 	};
 
-
-	/**
-	 *
-	 * @type {Object}
-	 */
-	kiva.Object.prototype = {
-
-		/**
-		 *
-		 * @param args
-		 * @returns jQuery.Deferred
-		 */
-		fetch: function (args) {
-			if (! (this.kivaSrc || this.zipSrc)) {
-				throw 'Error: You must define a kivaSrc and/or zipSrc'
-			}
-
-			var ids
-			, action
-			, url = this.kivaSrc;
-
-			if (args) {
-				ids = args.ids;
-				action = args.action;
-
-				if ($.isArray(ids)) {
-					url = url + '/' + ids.join(',');
-				} else if (ids) {
-					throw 'Error: ids must be an array';
-				}
-
-				if (action) {
-					url = url + '/' + action
-				}
-
-				url = url + '.json';
-			}
-
-			var $result = $.getJSON(url);
-
-			if (this.name) {
-				var self = this;
-				$result.done(function (response) {
-					self.members = response[self.name.toLowerCase()];
-				});
-			}
-
-			return $result;
-		}
-	};
 
 }(jQuery));
