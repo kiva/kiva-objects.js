@@ -1,4 +1,5 @@
 (function () {
+	'use strict';
 
 	kiva.RequestObject = kiva.Object.extend({
 
@@ -33,7 +34,7 @@
 				}
 
 				if (action) {
-					url = url + '/' + action
+					url = url + '/' + action;
 				}
 
 				url = url + '.json';

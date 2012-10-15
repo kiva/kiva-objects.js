@@ -1,5 +1,7 @@
 /*global afterEach, beforeEach, describe, expect, it, jasmine, runs, spyOn, waits, waitsFor, xdescribe, xit */
 describe('.Loans', function () {
+	'use strict';
+
 	it('exists', function () {
 		expect(kiva.Loans).toBeDefined();
 	});

@@ -1,4 +1,10 @@
 (function ($) {
+	'use strict';
+
+	// @todo Probably need to revisit this code
+	// @hack to get around jshint (https://github.com/jshint/jshint/issues/525)
+	var Fn = Function;
+
 
 	/**
 	 *
@@ -15,7 +21,7 @@
 	 */
 	kiva.Object.extend = function (args) {
 		var Child = args && args.name
-			? new Function ('return function ' + args.name + ' () {}')()
+			? new Fn ('return function ' + args.name + ' () {}')()
 			: function () {};
 
 		Child.prototype = $.extend({}, this.prototype, args);
@@ -33,7 +39,9 @@
 	 * @param args
 	 */
 	kiva.Object.create = function (args) {
-		var newObj = new this();
+		// @todo again, this if for jshint...
+		var This = this;
+		var newObj = new This();
 
 		return $.extend(newObj, args);
 	};

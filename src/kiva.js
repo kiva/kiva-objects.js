@@ -10,8 +10,8 @@
 	, kivaPath = '/v'
 	, zipPath = '/v';
 
+
 	/**
-	 *
 	 * @type {Object}
 	 */
 	global.kiva = {

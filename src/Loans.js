@@ -1,4 +1,6 @@
 (function ($) {
+	'use strict';
+
 	kiva.Loans = kiva.RequestObject.extend({
 		name: 'Loans'
 		, kivaSrc: kiva.kivaSrc + '/loans'

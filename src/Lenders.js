@@ -1,4 +1,6 @@
 (function ($) {
+	'use strict';
+
 	kiva.Lenders = kiva.Object.extend({
 		name: 'Lenders'
 		, kivaSrc: kiva.kivaSrc + '/lenders'

@@ -1,5 +1,6 @@
 /*global afterEach, beforeEach, describe, expect, it, jasmine, runs, spyOn, waits, waitsFor, xdescribe, xit */
 describe('.Object', function () {
+	'use strict';
 
 	describe('static function: .extend()', function () {
 		it('returns a new Constructor function that inherits from the current object', function () {

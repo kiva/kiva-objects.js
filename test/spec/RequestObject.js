@@ -1,5 +1,6 @@
 /*global afterEach, beforeEach, describe, expect, it, jasmine, runs, spyOn, waits, waitsFor, xdescribe, xit */
 describe('.RequestObject', function () {
+	'use strict';
 
 	// @todo might need to make this more specific
 	it('stores a reference to the Kiva and Kiva Zip API', function () {

@@ -16,12 +16,11 @@
 	, "undef": true
 	, "laxbreak": true
 	, "laxcomma": true
+	, "proto": true
 	, "validthis": true
 	, "jquery": true
 	, "predef":
 		[
-			"$"
-			, "kv"
-			, "$script"
+			"kiva"
 		]
 }
