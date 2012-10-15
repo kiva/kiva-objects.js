@@ -1,4 +1,11 @@
-# Current API
+# Kiva jQuery API
+
+A jQuery wrapper to handle basic requests to the Kiva API.
+
+## The public API
+
+http://build.kiva.org/api
+
  JournalEntries
  GET /journal_entries/:id/comments
  GET /journal_entries/search
