@@ -1,3 +1,4 @@
+/*global afterEach, beforeEach, describe, expect, it, jasmine, runs, spyOn, waits, waitsFor, xdescribe, xit */
 describe('.Object', function () {
 
 	describe('static function: .extend()', function () {

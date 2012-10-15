@@ -1,19 +1,10 @@
+/*global afterEach, beforeEach, describe, expect, it, jasmine, runs, spyOn, waits, waitsFor, xdescribe, xit */
 describe('.RequestObject', function () {
 
+	// @todo might need to make this more specific
 	it('stores a reference to the Kiva and Kiva Zip API', function () {
 		expect(typeof kiva.RequestObject.prototype.kivaSrc == 'string').toBe(true);
 		expect(typeof kiva.RequestObject.prototype.zipSrc == 'string').toBe(true);
-	});
-
-
-	xit('creates a pointer (__proto__) directly to the parents prototype', function () {
-
-	});
-
-
-	xit('leaves a pointer directly to the parents prototype', function () {
-
-
 	});
 
 

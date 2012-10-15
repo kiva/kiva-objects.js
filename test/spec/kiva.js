@@ -1,3 +1,4 @@
+/*global afterEach, beforeEach, describe, expect, it, jasmine, runs, spyOn, waits, waitsFor, xdescribe, xit */
 describe('kiva.js', function () {
 
 	it('has a pointer to the Kiva API base url', function () {

@@ -8,7 +8,6 @@
 
 		, zipSrc: kiva.zipSrc
 
-
 		, members: []
 
 
@@ -18,9 +17,10 @@
 		 * @returns jQuery.Deferred
 		 */
 		, fetch: function (args) {
-			var ids
+			var url = this.kivaSrc
+			, ids
 			, action
-			, url = this.kivaSrc;
+			, self;
 
 			if (args) {
 				ids = args.ids;
@@ -41,8 +41,8 @@
 
 			var $result = $.getJSON(url);
 
-			if (this.name) {
-				var self = this;
+			if (this.members) {
+				self = this;
 
 				$result.done(function (response) {
 					self.members = response[self.name.toLowerCase()];
