@@ -14,7 +14,7 @@ describe('.Object', function () {
 		});
 
 
-		it('returns a new Constructor function who\'s prototype gets extended with the supplied arguments', function () {
+		it('extends it\'s prototype with the supplied arguments', function () {
 			var NewConstructor = kiva.Object.extend({prop1: 'uno', prop2: 'dos'});
 
 			expect(NewConstructor.prototype.prop1).toBe('uno');
@@ -22,7 +22,7 @@ describe('.Object', function () {
 		});
 
 
-		it('creates a pointer (__proto__) directly to the parents prototype', function () {
+		it('creates a pointer (__proto__) directly to the parent\'s prototype', function () {
 			var NewConstructor = kiva.Object.extend({prop1: 'uno'});
 
 			expect(NewConstructor.prototype.__proto__).toBeDefined();
@@ -39,7 +39,7 @@ describe('.Object', function () {
 		});
 
 
-		it('returns an object instance of the current object and extends it with the supplied arguments', function () {
+		it('extends it with the supplied arguments', function () {
 			var dummyProperties = {prop1: 'uno', prop2: 'dos'}
 			, myObj = kiva.Object.create(dummyProperties);
 
@@ -67,10 +67,10 @@ describe('.Object', function () {
 
 			// Lets go one level deeper!
 			YetAnotherNewConstructor = NewConstructor.extend({prop: 'override uno'});
-			obj = YetAnotherNewConstructor.create({prop: 'override the override!!'});
+			obj = YetAnotherNewConstructor.create({prop: 'override the override!'});
 
 			expect(obj.__proto__.__proto__.prop).toBeDefined();
-			expect(obj.prop).toBe('override the override!!');
+			expect(obj.prop).toBe('override the override!');
 			expect(obj.__proto__.prop).toBe('override uno');
 			expect(obj.__proto__.__proto__.prop).toBe('uno');
 		});

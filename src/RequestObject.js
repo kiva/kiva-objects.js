@@ -2,7 +2,9 @@
 
 	kiva.RequestObject = kiva.Object.extend({
 
-		kivaSrc: kiva.kivaSrc
+		name: 'RequestObject'
+
+		, kivaSrc: kiva.kivaSrc
 
 		, zipSrc: kiva.zipSrc
 
@@ -41,6 +43,7 @@
 
 			if (this.name) {
 				var self = this;
+
 				$result.done(function (response) {
 					self.members = response[self.name.toLowerCase()];
 				});
