@@ -26,18 +26,15 @@ describe('.RequestObject', function () {
 
 	describe('instance method: .fetch()', function () {
 
-		it ('Makes a $.ajax call and returns the jqXHR results', function () {
+		it ('Makes an $.ajax call and returns the jqXHR results', function () {
 			var obj = kiva.RequestObject.create()
-			, ajaxSpy = spyOn($, 'ajax').andReturn('ajaxResults')
-			, ajaxResults;
-
-			obj.kivaSrc = kiva.kivaSrc + '/loans';
-			obj.zipSrc = kiva.zipSrc + '/loans';
-
-			ajaxResults = obj.fetch();
+			, ajaxSpy = spyOn($, 'ajax').andCallFake(function () {
+				return jasmine.createSpyObj('jqXHR spy', ['done']);
+			})
+			, ajaxResults = obj.fetch();
 
 			expect(ajaxSpy).toHaveBeenCalled();
-			expect(ajaxResults).toBe('ajaxResults')
+			expect(ajaxResults.done).toHaveBeenCalled();
 		});
 	});
 });
