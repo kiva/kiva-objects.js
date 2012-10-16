@@ -1,3 +1,6 @@
+*~
+._*.*
+_*.*
+.DS_Store
 node_modules
 test/junit/*
-_*.*
