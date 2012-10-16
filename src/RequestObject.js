@@ -15,10 +15,8 @@ kiva.RequestObject = kiva.Object.extend({
 	 * @returns jQuery.Deferred
 	 */
 	, fetch: function (args) {
-		var url = this.kivaSrc
-		, ids
-		, action
-		, self;
+		var ids, action, self, $result
+		, url = this.kivaSrc;
 
 		if (args) {
 			ids = args.ids;
@@ -37,15 +35,12 @@ kiva.RequestObject = kiva.Object.extend({
 			url = url + '.json';
 		}
 
-		var $result = $.getJSON(url);
+		$result = $.getJSON(url);
 
-		if (this.members) {
-			self = this;
-
-			$result.done(function (response) {
-				self.members = response[self.name.toLowerCase()];
-			});
-		}
+		self = this;
+		$result.done(function (response) {
+			self.members = response[self.name.toLowerCase()];
+		});
 
 		return $result;
 	}
