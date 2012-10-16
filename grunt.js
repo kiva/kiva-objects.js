@@ -78,7 +78,7 @@ module.exports = function(grunt) {
 				, 'test/spec/RequestObject.js'
 				, 'test/spec/*.js'
 			]
-			, timeout: 5000
+			, timeout: 1000
 			, template: 'test/specRunner.tmpl'
 			, junit: {
 				output: 'test/junit/'
@@ -96,11 +96,12 @@ module.exports = function(grunt) {
 	// Add dox https://github.com/punkave/grunt-dox
 	grunt.loadNpmTasks('grunt-dox');
 
+
 	// Add jasmine https://github.com/jasmine-contrib/grunt-jasmine-runner
 	grunt.loadNpmTasks('grunt-jasmine-runner');
 
 
 	// Default task.
-	grunt.registerTask('default', 'lint concat min dox');
+	grunt.registerTask('default', 'lint jasmine concat min dox');
 
 };
