@@ -26,6 +26,8 @@ global.kiva = {
 	, kivaSrc: 'http://' + kivaHost + kivaPath + kivaApiVersion
 	, zipSrc: 'http://' + zipHost + zipPath + zipApiVersion
 };
+
+
 // @todo Probably need to revisit this code
 // @hack to get around jshint (https://github.com/jshint/jshint/issues/525)
 var Fn = Function;
@@ -70,6 +72,8 @@ kiva.Object.create = function (args) {
 
 	return $.extend(newObj, args);
 };
+
+
 kiva.RequestObject = kiva.Object.extend({
 
 	name: 'RequestObject'
@@ -122,6 +126,8 @@ kiva.RequestObject = kiva.Object.extend({
 		return $result;
 	}
 });
+
+
 kiva.Loans = kiva.RequestObject.extend({
 	name: 'Loans'
 	, kivaSrc: kiva.kivaSrc + '/loans'
@@ -130,6 +136,8 @@ kiva.Loans = kiva.RequestObject.extend({
 		return kiva.RequestObject.prototype.fetch.call(this, args);
 	}
 });
+
+
 kiva.Lenders = kiva.Object.extend({
 	name: 'Lenders'
 	, kivaSrc: kiva.kivaSrc + '/lenders'
@@ -138,6 +146,8 @@ kiva.Lenders = kiva.Object.extend({
 		return kiva.RequestObject.prototype.fetch.call(this, args);
 	}
 });
+
+
 
 
 }(jQuery, this));
