@@ -20,7 +20,7 @@ The following are some useful tools:
 
 ### Building changes
 
-If you have all the recommended modules you can just run the following in the command line to do a local build:
+If you have all the recommended modules you can just run the following in the command line to test your changes:
 (see grunt.js for the configuration options)
 
 ```
@@ -28,6 +28,18 @@ grunt
 ```
 
 If everything come up "green", then you know you can check it in.
+
+Often times it's usefull to run tests in an actual browser:
+
+```
+grunt jasmine-server
+```
+
+If you want to do a full build, run:
+
+```
+grunt build
+```
 
 
 ## The public API
