@@ -7,11 +7,9 @@ module.exports = function(grunt) {
 	grunt.initConfig({
 		meta: {
 			version: '0.1.0'
-			, banner: '/*! kiva.js - v<%= meta.version %> - ' +
-				'<%= grunt.template.today("yyyy-mm-dd") %>\n' +
-				'* http://kiva.org/\n' +
-				'* Copyright (c) <%= grunt.template.today("yyyy") %> ' +
-				'kiva.org; Licensed MIT */'
+			, banner: '/**\n * kiva.js - v<%= meta.version %> - <%= grunt.template.today("yyyy-mm-dd h:MM:ss TT") %>\n' +
+				' * http://kiva.org/\n' +
+				' * Copyright (c) <%= grunt.template.today("yyyy") %> kiva.org\n */'
 		}
 		, sourceFiles: [
 			'src/kiva.js'
