@@ -19,7 +19,7 @@ describe('.RequestObject', function () {
 	describe('instance method: .fetch()', function () {
 		var mockJqXhr = {
 			done: function (doneCallback) {
-				doneCallback.call({}, {requestobject: 'my request result'})
+				doneCallback.call({}, {requestobject: 'my request result'});
 			}
 		};
 
