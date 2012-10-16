@@ -6,3 +6,4 @@ kiva.Loans = kiva.RequestObject.extend({
 		return kiva.RequestObject.prototype.fetch.call(this, args);
 	}
 });
+

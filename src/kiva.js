@@ -18,3 +18,4 @@ global.kiva = {
 	, kivaSrc: 'http://' + kivaHost + kivaPath + kivaApiVersion
 	, zipSrc: 'http://' + zipHost + zipPath + zipApiVersion
 };
+

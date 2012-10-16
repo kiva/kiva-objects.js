@@ -50,3 +50,4 @@ kiva.RequestObject = kiva.Object.extend({
 		return $result;
 	}
 });
+
