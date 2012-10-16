@@ -2,6 +2,32 @@
 
 A jQuery wrapper to handle basic requests to the Kiva API.
 
+## Development
+
+You will need the following to lint and unit test your changes.
+
+* install [Nodejs](http://nodejs.org/)
+* install [jsHint](http://www.jshint.com/)
+* install [Jasmine](http://pivotal.github.com/jasmine/)
+
+The following are some useful tools:
+
+* install [npm](https://npmjs.org/)
+* install [Grunt](http://gruntjs.com/)
+* install [grunt-dox](https://github.com/punkave/grunt-dox)
+* install [PhantomJs](http://phantomjs.org/)
+* install [grunt-jasmine-runner](https://github.com/jasmine-contrib/grunt-jasmine-runner)
+
+### Building changes
+
+If you have all the recommended modules you can just run the following in the command line to do a local build:
+(see grunt.js for the configuration options)
+
+```
+grunt
+```
+
+
 ## The public API
 
 http://build.kiva.org/api
