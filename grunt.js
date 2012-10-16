@@ -113,6 +113,8 @@ module.exports = function(grunt) {
 
 	// Default task.
 	grunt.registerTask('default', 'concat lint jasmine');
-	grunt.registerTask('build', 'concat lint jasmine dox min');
+
+	// @todo add "dox" back in, however, for now it seems to be causing task listed after it to not run
+	grunt.registerTask('build', 'concat lint jasmine min');
 
 };
