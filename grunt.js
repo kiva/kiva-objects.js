@@ -39,7 +39,7 @@ module.exports = function(grunt) {
 		}
 		, watch: {
 			files: '<config:sourceFiles>'
-			, tasks: 'lint jasmine'
+			, tasks: 'concat lint jasmine'
 		}
 		, lint: {
 			all: ['kiva.js', 'grunt.js', 'test/spec/*.js']
