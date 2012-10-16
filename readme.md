@@ -27,6 +27,8 @@ If you have all the recommended modules you can just run the following in the co
 grunt
 ```
 
+If everything come up "green", then you know you can check it in.
+
 
 ## The public API
 
