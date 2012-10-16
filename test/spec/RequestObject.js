@@ -40,6 +40,7 @@ describe('.RequestObject', function () {
 			var fakeResults
 			, obj = kiva.RequestObject.create();
 
+			// Important!  The response from this fake ajax reqeust does not reflect the signature of a real jqXHR response.
 			spyOn($, 'ajax').andCallFake(function (args) {
 				return {done: function () {}, url: args.url};
 			});
