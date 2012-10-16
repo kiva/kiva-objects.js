@@ -1,5 +1,5 @@
 /**
- * kiva.js - v0.1.0 - 2012-10-16 12:31:37 AM
+ * kiva.js - v0.1.0 - 2012-10-16 1:45:06 PM
  * http://kiva.org/
  * Copyright (c) 2012 kiva.org
  */
@@ -28,8 +28,6 @@ global.kiva = {
 	, kivaSrc: 'http://' + kivaHost + kivaPath + kivaApiVersion
 	, zipSrc: 'http://' + zipHost + zipPath + zipApiVersion
 };
-
-
 // @todo Probably need to revisit this code
 // @hack to get around jshint (https://github.com/jshint/jshint/issues/525)
 var Fn = Function;
@@ -93,37 +91,39 @@ kiva.RequestObject = kiva.Object.extend({
 	 * @returns jQuery.Deferred
 	 */
 	, fetch: function (args) {
-		var url = this.kivaSrc
-		, ids
-		, action
-		, self;
+		var ids, action, self, $result
+		, url = this.kivaSrc;
 
 		if (args) {
-			ids = args.ids;
-			action = args.action;
+			if ($.isArray(args)) {
+				ids = args;
+			} else if (typeof args == 'number') {
+				ids = [args];
+			} else {
+				ids = args.ids;
+				action = args.action;
+			}
 
-			if ($.isArray(ids)) {
-				url = url + '/' + ids.join(',');
-			} else if (ids) {
-				throw 'Error: ids must be an array';
+			if (ids && !$.isArray(ids)) {
+				throw 'Error: "ids" must be an array';
 			}
 
 			if (action) {
-				url = url + '/' + action;
+				ids = ids ? ids[0] + '/' : '';
+				url = url + '/' + ids + action;
+			} else {
+				url = url + '/' + ids.join(',');
 			}
-
-			url = url + '.json';
 		}
 
-		var $result = $.getJSON(url);
+		url = url + '.json';
 
-		if (this.members) {
-			self = this;
+		$result = $.getJSON(url);
 
-			$result.done(function (response) {
-				self.members = response[self.name.toLowerCase()];
-			});
-		}
+		self = this;
+		$result.done(function (response) {
+			self.members = response[self.name.toLowerCase()];
+		});
 
 		return $result;
 	}
