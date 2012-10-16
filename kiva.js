@@ -1,4 +1,4 @@
-/*! kiva.js - v0.1.0 - 2012-10-14
+/*! kiva.js - v0.1.0 - 2012-10-15
 * http://kiva.org/
 * Copyright (c) 2012 kiva.org; Licensed MIT */
 
