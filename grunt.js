@@ -65,11 +65,39 @@ module.exports = function(grunt) {
 			}
 		}
 		, uglify: {}
+		, jasmine : {
+			src: [
+				'src/kiva.js'
+				, 'src/Object.js'
+				, 'src/RequestObject.js'
+				, 'src/*.js'
+			]
+			, specs: [
+				'test/spec/kiva.js'
+				, 'test/spec/Object.js'
+				, 'test/spec/RequestObject.js'
+				, 'test/spec/*.js'
+			]
+			, timeout: 5000
+			, template: 'test/specRunner.tmpl'
+			, junit: {
+				output: 'test/junit/'
+			}
+			, phantomjs: {
+				'ignore-ssl-errors': true
+			}
+		}
+		, 'jasmine-server' : {
+			browser : false
+		}
 	});
 
 
 	// Add dox https://github.com/punkave/grunt-dox
 	grunt.loadNpmTasks('grunt-dox');
+
+	// Add jasmine https://github.com/jasmine-contrib/grunt-jasmine-runner
+	grunt.loadNpmTasks('grunt-jasmine-runner');
 
 
 	// Default task.
