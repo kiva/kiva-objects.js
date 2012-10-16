@@ -18,7 +18,7 @@ The following are some useful tools:
 * install [PhantomJs](http://phantomjs.org/)
 * install [grunt-jasmine-runner](https://github.com/jasmine-contrib/grunt-jasmine-runner)
 
-### Building changes
+### Testing & building your changes
 
 If you have all the recommended modules you can just run the following in the command line to test your changes:
 (see grunt.js for the configuration options)
