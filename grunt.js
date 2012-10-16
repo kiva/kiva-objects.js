@@ -72,12 +72,7 @@ module.exports = function(grunt) {
 				, 'src/RequestObject.js'
 				, 'src/*.js'
 			]
-			, specs: [
-				'test/spec/kiva.js'
-				, 'test/spec/Object.js'
-				, 'test/spec/RequestObject.js'
-				, 'test/spec/*.js'
-			]
+			, specs: 'test/spec/*.js'
 			, timeout: 1000
 			, template: 'test/specRunner.tmpl'
 			, junit: {
