@@ -13,16 +13,19 @@ module.exports = function(grunt) {
 				'* Copyright (c) <%= grunt.template.today("yyyy") %> ' +
 				'kiva.org; Licensed MIT */'
 		}
+		, sourceFiles: [
+			'src/kiva.js'
+			, 'src/Object.js'
+			, 'src/RequestObject.js'
+			, 'src/Loans.js'
+			, 'src/Lenders.js'
+		]
 		, concat: {
 			dist: {
 				src: [
 					'<banner:meta.banner>'
 					, 'src/iifeOpen.js'
-					, 'src/kiva.js'
-					, 'src/Object.js'
-					, 'src/RequestObject.js'
-					, 'src/Loans.js'
-					, 'src/Lenders.js'
+					, '<config:sourceFiles>'
 					, 'src/iifeClose.js'
 				]
 				, dest: 'kiva.js'
@@ -34,14 +37,12 @@ module.exports = function(grunt) {
 				, dest: 'kiva.min.js'
 			}
 		}
-		//   watch: {
-		//      files: '<config:lint.files>',
-		//      tasks: 'lint qunit'
-		//    }
+		, watch: {
+			files: '<config:sourceFiles>'
+			, tasks: 'lint jasmine'
+		}
 		, lint: {
-			dist: 'kiva.js'
-			, grunt: 'grunt.js'
-			, tests: 'test/spec/*.js'
+			all: ['kiva.js', 'grunt.js', 'test/spec/*.js']
 		}
 		, jshint: {
 			options: {
@@ -74,7 +75,13 @@ module.exports = function(grunt) {
 		, uglify: {}
 		, jasmine : {
 			src: ['kiva.js']
-			, specs: 'test/spec/*.js'
+			, specs: [
+				'test/spec/kiva.js'
+				, 'test/spec/Object.js'
+				, 'test/spec/RequestObject.js'
+				, 'test/spec/Loans.js'
+				, 'test/spec/Lenders.js'
+			]
 			, timeout: 1000
 			, template: 'test/specRunner.tmpl'
 			, junit: {
@@ -85,7 +92,7 @@ module.exports = function(grunt) {
 			}
 		}
 		, 'jasmine-server' : {
-			browser : false
+			browser : true
 		}
 		, dox: {
 			files: {
@@ -105,6 +112,7 @@ module.exports = function(grunt) {
 
 
 	// Default task.
-	grunt.registerTask('default', 'concat lint jasmine dox min');
+	grunt.registerTask('default', 'concat lint jasmine');
+	grunt.registerTask('build', 'concat lint jasmine dox min');
 
 };
