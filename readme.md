@@ -35,6 +35,14 @@ Often times it's usefull to run tests in an actual browser:
 grunt jasmine-server
 ```
 
+If you're going switching back and forth between your test and your code a lot:
+(note that this will automatically concatenate, lint, and test your code every time you save)
+
+```
+grunt watch
+```
+
+
 If you want to do a full build, run:
 
 ```
