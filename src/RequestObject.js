@@ -18,19 +18,15 @@ kiva.RequestObject = kiva.Object.extend({
 		var ids, action, self, $result
 		, url = this.kivaSrc;
 
-
-		/**
-		 * - args.action is not required but when its there, you can have at most, one id
-		 * - args.ids is not required but when it's more than one it can not have an action
-		 * - args.ids can only have an action when there is only one args.id
-		 * - it is also possible to have 0 args
-		 *
-		 *
-		 */
-
 		if (args) {
-			ids = args.ids;
-			action = args.action;
+			if ($.isArray(args)) {
+				ids = args;
+			} else if (typeof args == 'number') {
+				ids = [args];
+			} else {
+				ids = args.ids;
+				action = args.action;
+			}
 
 			if (ids && !$.isArray(ids)) {
 				throw 'Error: "ids" must be an array';

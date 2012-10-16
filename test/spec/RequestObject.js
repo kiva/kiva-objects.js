@@ -49,6 +49,12 @@ describe('.RequestObject', function () {
 				obj.fetch({ids: 1});
 			}).toThrow();
 
+			fakeResults = obj.fetch(456);
+			expect(fakeResults.url).toBe(obj.kivaSrc + '/456.json');
+
+			fakeResults = obj.fetch([456, 677]);
+			expect(fakeResults.url).toBe(obj.kivaSrc + '/456,677.json');
+
 			fakeResults = obj.fetch({ids: [456, 677]});
 			expect(fakeResults.url).toBe(obj.kivaSrc + '/456,677.json');
 
