@@ -18,22 +18,33 @@ kiva.RequestObject = kiva.Object.extend({
 		var ids, action, self, $result
 		, url = this.kivaSrc;
 
+
+		/**
+		 * - args.action is not required but when its there, you can have at most, one id
+		 * - args.ids is not required but when it's more than one it can not have an action
+		 * - args.ids can only have an action when there is only one args.id
+		 * - it is also possible to have 0 args
+		 *
+		 *
+		 */
+
 		if (args) {
 			ids = args.ids;
 			action = args.action;
 
-			if ($.isArray(ids)) {
-				url = url + '/' + ids.join(',');
-			} else if (ids) {
-				throw 'Error: ids must be an array';
+			if (ids && !$.isArray(ids)) {
+				throw 'Error: "ids" must be an array';
 			}
 
 			if (action) {
-				url = url + '/' + action;
+				ids = ids ? ids[0] + '/' : '';
+				url = url + '/' + ids + action;
+			} else {
+				url = url + '/' + ids.join(',');
 			}
-
-			url = url + '.json';
 		}
+
+		url = url + '.json';
 
 		$result = $.getJSON(url);
 

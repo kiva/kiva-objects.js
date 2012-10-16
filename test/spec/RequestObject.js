@@ -35,5 +35,30 @@ describe('.RequestObject', function () {
 			expect(ajaxResults.done).toHaveBeenCalled();
 			expect(obj.members).toBe('my request result');
 		});
+
+		it('Sets up the proper url', function () {
+			var fakeResults
+			, obj = kiva.RequestObject.create();
+
+			spyOn($, 'ajax').andCallFake(function (args) {
+				return {done: function () {}, url: args.url};
+			});
+
+			expect(function () {
+				obj.fetch({ids: 1});
+			}).toThrow();
+
+			fakeResults = obj.fetch({ids: [456, 677]});
+			expect(fakeResults.url).toBe(obj.kivaSrc + '/456,677.json');
+
+			fakeResults = obj.fetch({action: 'doStuff'});
+			expect(fakeResults.url).toBe(obj.kivaSrc + '/doStuff.json');
+
+			fakeResults = obj.fetch({ids: [456, 788], action: 'doStuff'});
+			expect(fakeResults.url).toBe(obj.kivaSrc + '/456/doStuff.json');
+
+			fakeResults = obj.fetch();
+			expect(fakeResults.url).toBe(obj.kivaSrc + '.json');
+		});
 	});
 });
