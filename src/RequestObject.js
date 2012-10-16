@@ -1,57 +1,52 @@
-(function () {
-	'use strict';
+kiva.RequestObject = kiva.Object.extend({
 
-	kiva.RequestObject = kiva.Object.extend({
+	name: 'RequestObject'
 
-		name: 'RequestObject'
+	, kivaSrc: kiva.kivaSrc
 
-		, kivaSrc: kiva.kivaSrc
+	, zipSrc: kiva.zipSrc
 
-		, zipSrc: kiva.zipSrc
-
-		, members: []
+	, members: []
 
 
-		/**
-		 *
-		 * @param args
-		 * @returns jQuery.Deferred
-		 */
-		, fetch: function (args) {
-			var url = this.kivaSrc
-			, ids
-			, action
-			, self;
+	/**
+	 *
+	 * @param args
+	 * @returns jQuery.Deferred
+	 */
+	, fetch: function (args) {
+		var url = this.kivaSrc
+		, ids
+		, action
+		, self;
 
-			if (args) {
-				ids = args.ids;
-				action = args.action;
+		if (args) {
+			ids = args.ids;
+			action = args.action;
 
-				if ($.isArray(ids)) {
-					url = url + '/' + ids.join(',');
-				} else if (ids) {
-					throw 'Error: ids must be an array';
-				}
-
-				if (action) {
-					url = url + '/' + action;
-				}
-
-				url = url + '.json';
+			if ($.isArray(ids)) {
+				url = url + '/' + ids.join(',');
+			} else if (ids) {
+				throw 'Error: ids must be an array';
 			}
 
-			var $result = $.getJSON(url);
-
-			if (this.members) {
-				self = this;
-
-				$result.done(function (response) {
-					self.members = response[self.name.toLowerCase()];
-				});
+			if (action) {
+				url = url + '/' + action;
 			}
 
-			return $result;
+			url = url + '.json';
 		}
-	});
 
-}());
+		var $result = $.getJSON(url);
+
+		if (this.members) {
+			self = this;
+
+			$result.done(function (response) {
+				self.members = response[self.name.toLowerCase()];
+			});
+		}
+
+		return $result;
+	}
+});
