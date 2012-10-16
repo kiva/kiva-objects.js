@@ -6,17 +6,17 @@ A jQuery wrapper to handle basic requests to the Kiva API.
 
 You will need the following to lint and unit test your changes.
 
-* install [Nodejs](http://nodejs.org/)
-* install [jsHint](http://www.jshint.com/)
-* install [Jasmine](http://pivotal.github.com/jasmine/)
+* [Nodejs](http://nodejs.org/)
+* [jsHint](http://www.jshint.com/)
+* [Jasmine](http://pivotal.github.com/jasmine/)
 
 The following are some useful tools:
 
-* install [npm](https://npmjs.org/)
-* install [Grunt](http://gruntjs.com/)
-* install [grunt-dox](https://github.com/punkave/grunt-dox)
-* install [PhantomJs](http://phantomjs.org/)
-* install [grunt-jasmine-runner](https://github.com/jasmine-contrib/grunt-jasmine-runner)
+* [npm](https://npmjs.org/)
+* [Grunt](http://gruntjs.com/)
+* [grunt-dox](https://github.com/punkave/grunt-dox)
+* [PhantomJs](http://phantomjs.org/)
+* [grunt-jasmine-runner](https://github.com/jasmine-contrib/grunt-jasmine-runner)
 
 ### Testing & building your changes
 
