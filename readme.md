@@ -6,12 +6,12 @@ A jQuery wrapper to handle basic requests to the Kiva API.
 
 You will need the following to lint and unit test your changes.
 
-* [Nodejs](http://nodejs.org/)
 * [jsHint](http://www.jshint.com/)
 * [Jasmine](http://pivotal.github.com/jasmine/)
 
 The following are some useful tools:
 
+* [Nodejs](http://nodejs.org/)
 * [npm](https://npmjs.org/)
 * [Grunt](http://gruntjs.com/)
 * [grunt-dox](https://github.com/punkave/grunt-dox)
