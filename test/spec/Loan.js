@@ -3,13 +3,13 @@ describe('.Loans', function () {
 	'use strict';
 
 	it('exists', function () {
-		expect(kiva.Loans).toBeDefined();
+		expect(kiva.Loan).toBeDefined();
 	});
 
 	describe('instance method: .fetch()', function () {
 
 		it('does stuff then calls the parent constructor\'s "fetch" method', function () {
-			var loans = kiva.Loans.create();
+			var loans = kiva.Loan.create();
 
 			spyOn(kiva.RequestObject.prototype, 'fetch');
 			loans.fetch([8930, 84930, 28472]);

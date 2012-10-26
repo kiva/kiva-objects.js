@@ -1,5 +1,5 @@
 kiva.Loans = kiva.RequestObject.extend({
-	name: 'Loans'
+	name: 'Loan'
 	, kivaSrc: kiva.kivaSrc + '/loans'
 	, zipSrc: kiva.zipSrc + '/loans'
 	, fetch: function (args) {

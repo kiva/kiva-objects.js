@@ -4,19 +4,24 @@ kiva.RequestObject = kiva.Object.extend({
 
 	, kivaSrc: kiva.kivaSrc
 
+
 	, zipSrc: kiva.zipSrc
+
 
 	, members: []
 
 
-	/**
-	 *
-	 * @param args
-	 * @returns jQuery.Deferred
-	 */
-	, fetch: function (args) {
-		var ids, action, self, $result
-		, url = this.kivaSrc;
+	, plurals: {}
+
+
+	, pluralize: function (objectName) {
+
+	}
+
+
+	, buildUrl: function (args) {
+		var ids, action
+		, url = [this.kivaSrc, this.name.toLowerCase()];
 
 		if (args) {
 			if ($.isArray(args)) {
@@ -33,23 +38,33 @@ kiva.RequestObject = kiva.Object.extend({
 			}
 
 			if (action) {
-				ids = ids ? ids[0] + '/' : '';
-				url = url + '/' + ids + action;
+				if (ids) {
+					url.push(ids[0]);
+				}
+
+				url.push(action);
 			} else {
-				url = url + '/' + ids.join(',');
+				ids = ids.join(',');
+				url.push(ids);
 			}
 		}
 
-		url = url + '.json';
+		return url.join('/') + '.json';
+	}
 
-		$result = $.getJSON(url);
 
-		self = this;
-		$result.done(function (response) {
-			self.members = response[self.name.toLowerCase()];
+	/**
+	 *
+	 * @param args
+	 * @returns jQuery.Deferred
+	 */
+	, fetch: function (args) {
+		var _this = this
+		, $result = $.getJSON(this.buildUrl(args));
+
+		return $result.done(function (response) {
+			_this.members = response[_this.name.toLowerCase()];
 		});
-
-		return $result;
 	}
 });
 

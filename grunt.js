@@ -15,8 +15,8 @@ module.exports = function(grunt) {
 			'src/kiva.js'
 			, 'src/Object.js'
 			, 'src/RequestObject.js'
-			, 'src/Loans.js'
-			, 'src/Lenders.js'
+			, 'src/Loan.js'
+			, 'src/Lender.js'
 		]
 		, concat: {
 			dist: {
@@ -77,8 +77,8 @@ module.exports = function(grunt) {
 				'test/spec/kiva.js'
 				, 'test/spec/Object.js'
 				, 'test/spec/RequestObject.js'
-				, 'test/spec/Loans.js'
-				, 'test/spec/Lenders.js'
+				, 'test/spec/Loan.js'
+				, 'test/spec/Lender.js'
 			]
 			, timeout: 1000
 			, template: 'test/specRunner.tmpl'
