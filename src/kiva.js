@@ -5,16 +5,12 @@ var  version = 1
 , zipHost = 'zip.kiva.org'
 
 , kivaPath = '/v'
-, zipPath = '/v';
+, zipPath = '/v'
 
-
-/**
- * @type {Object}
- */
-global.kiva = {
-	ver: version
-	, kVer: kivaApiVersion
-	, zVer: zipApiVersion
-	, kivaSrc: 'http://' + kivaHost + kivaPath + kivaApiVersion
-	, zipSrc: 'http://' + zipHost + zipPath + zipApiVersion
+, kiva = {
+    ver: version
+    , kVer: kivaApiVersion
+    , zVer: zipApiVersion
+    , kivaSrc: 'http://' + kivaHost + kivaPath + kivaApiVersion
+    , zipSrc: 'http://' + zipHost + zipPath + zipApiVersion
 };

@@ -29,13 +29,13 @@ module.exports = function(grunt) {
 					, '<config:sourceFiles>'
 					, 'src/iifeClose.js'
 				]
-				, dest: 'kiva.js'
+				, dest: 'dist/kiva.js'
 			}
 		}
 		, min: {
 			dist: {
 				src: ['<banner:meta.banner>', '<config:concat.dist.dest>']
-				, dest: 'kiva.min.js'
+				, dest: 'dist/kiva.min.js'
 			}
 		}
 		, watch: {
