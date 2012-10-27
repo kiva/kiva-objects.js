@@ -42,4 +42,3 @@ kiva.Object.create = function (args) {
 
 	return $.extend(newObj, args);
 };
-

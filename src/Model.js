@@ -1,4 +1,4 @@
-kiva.RequestObject = kiva.Object.extend({
+kiva.Model = kiva.Object.extend({
 
 	name: 'RequestObject'
 
@@ -14,6 +14,16 @@ kiva.RequestObject = kiva.Object.extend({
 	, plurals: {}
 
 
+	, _status: ''
+
+
+	, content: {}
+
+
+	/**
+	 *
+	 * @param {String} name
+	 */
 	, pluralize: function (name) {
 		var plural = this.plurals[name];
 
@@ -78,15 +88,49 @@ kiva.RequestObject = kiva.Object.extend({
 
 	/**
 	 *
+	 * @param {String} status
+	 * @param {Object} [data]
+	 */
+	, status: function (status, data) {
+		if (status && (this._status != status)) {
+			this._status = status;
+		}
+
+		return this._status;
+	}
+
+
+	/**
+	 * Loads data onto the Model
+	 *
+	 * @param {Object} data
+	 */
+	, load: function (data) {
+		this.content = $.extend(this.content, data);
+		this.status('loaded', data);
+	}
+
+
+	/**
+	 *
 	 * @param args
-	 * @returns jQuery.Deferred
+	 * @returns {kiva.Model}
 	 */
 	, fetch: function (args) {
-		var _this = this
-		, $result = $.getJSON(this.buildUrl(args));
+		var _this = this;
 
-		return $result.done(function (response) {
-			_this.members = response[_this.name.toLowerCase()];
-		});
+		this.status('fetching');
+		this.jqXhr = $.getJSON(this.buildUrl(args))
+				.progress(function () {
+					_this.status('progress')
+				})
+				.fail(function () {
+					_this.status('failed');
+				})
+				.done(function (response) {
+					_this.load(response[_this.name.toLowerCase()])
+				});
+
+		return this;
 	}
 });
