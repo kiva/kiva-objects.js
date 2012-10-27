@@ -14,17 +14,22 @@ kiva.RequestObject = kiva.Object.extend({
 	, plurals: {}
 
 
-	, pluralize: function (objectName) {
+	, pluralize: function (name) {
+		var plural = this.plurals[name];
 
+		// Allows for custom pluralization + prevent pluralizing what's already been pluralized
+		if (! plural){
+			plural = name + 's';
+			this.plurals[plural] = plural;
+		}
+
+		return plural
 	}
 
 
 	, buildUrl: function (args) {
-		var ids
-		, action
-		, params
-		, url = [this.kivaSrc];
-
+		var ids, action
+		, url = [this.kivaSrc, this.pluralize(this.name.toLowerCase())];
 
 		if (args) {
 			if ($.isArray(args)) {
