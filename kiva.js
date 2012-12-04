@@ -96,8 +96,11 @@ kiva.RequestObject = kiva.Object.extend({
 
 
 	, buildUrl: function (args) {
-		var ids, action
-		, url = [this.kivaSrc, this.name.toLowerCase()];
+		var ids
+		, action
+		, query_string
+		, url = [this.kivaSrc];
+
 
 		if (args) {
 			if ($.isArray(args)) {
@@ -107,6 +110,7 @@ kiva.RequestObject = kiva.Object.extend({
 			} else {
 				ids = args.ids;
 				action = args.action;
+				query_string = args.query_string;
 			}
 
 			if (ids && !$.isArray(ids)) {
@@ -119,13 +123,19 @@ kiva.RequestObject = kiva.Object.extend({
 				}
 
 				url.push(action);
-			} else {
+			} else if (ids) {
 				ids = ids.join(',');
 				url.push(ids);
 			}
 		}
+		
+		url = url.join('/') + '.json';
 
-		return url.join('/') + '.json';
+		if (query_string) {
+			url += '?' + query_string;
+		}
+
+		return url;
 	}
 
 

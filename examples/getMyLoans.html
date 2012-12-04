@@ -1,12 +1,8 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<script src="/lib/jquery.js"></script>
-		<script src="/src/kiva.js"></script>
-		<script src="/src/Object.js"></script>
-		<script src="/src/RequestObject.js"></script>
-		<script src="/src/Loans.js"></script>
-		<script src="/src/Lenders.js"></script>
+		<script src="../lib/jquery.js"></script>
+		<script src="../kiva.js"></script>
 
 	</head>
 	<body>
@@ -16,7 +12,7 @@
 
 			var loans = kiva.Loans.create();
 
-			var loansjQXhr = loans.fetch([46382, 5643]);
+			var loansjQXhr = loans.fetch({'ids': [12345,23456]});
 
 			loansjQXhr.done(function () {
 				$('#results').append(JSON.stringify(loans.members));
