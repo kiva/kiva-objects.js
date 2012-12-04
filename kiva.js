@@ -98,7 +98,7 @@ kiva.RequestObject = kiva.Object.extend({
 	, buildUrl: function (args) {
 		var ids
 		, action
-		, query_string
+		, params
 		, url = [this.kivaSrc];
 
 
@@ -110,7 +110,7 @@ kiva.RequestObject = kiva.Object.extend({
 			} else {
 				ids = args.ids;
 				action = args.action;
-				query_string = args.query_string;
+				params = args.params;
 			}
 
 			if (ids && !$.isArray(ids)) {
@@ -131,8 +131,12 @@ kiva.RequestObject = kiva.Object.extend({
 		
 		url = url.join('/') + '.json';
 
-		if (query_string) {
-			url += '?' + query_string;
+		if (params) {
+			url += '?';
+			$.each(params, function (key, val) {
+				url += key + '=' + val + '&';
+			});
+				
 		}
 
 		return url;
