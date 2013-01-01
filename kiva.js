@@ -128,6 +128,10 @@ kiva.RequestObject = kiva.Object.extend({
 				url.push(ids);
 			}
 		}
+
+		if (this.kivaSrcSuffix) {
+			url.push(this.kivaSrcSuffix);
+		}
 		
 		url = url.join('/') + '.json';
 
@@ -158,6 +162,56 @@ kiva.RequestObject = kiva.Object.extend({
 	}
 });
 
+kiva.JournalEntries = kiva.RequestObject.extend({
+	name: 'JournalEntries'
+	, kivaSrc: kiva.kivaSrc + '/journal_entries'
+	, zipSrc: kiva.zipSrc + '/journal_entries'
+	, fetch: function (args) {
+		return kiva.RequestObject.prototype.fetch.call(this, args);
+	}
+});
+
+kiva.JournalEntries.Comments = kiva.RequestObject.extend({
+	name: 'Comments'
+	, kivaSrc: kiva.kivaSrc + '/journal_entries'
+	, kivaSrcSuffix: 'comments'
+	, zipSrc: kiva.zipSrc + '/journal_entries'
+	, zipSrcSuffix: 'comments'
+	, fetch: function (args) {
+		return kiva.RequestObject.prototype.fetch.call(this, args);
+	}
+});
+
+kiva.Lenders = kiva.RequestObject.extend({
+	name: 'Lenders'
+	, kivaSrc: kiva.kivaSrc + '/lenders'
+	, zipSrc: kiva.zipSrc + '/lenders'
+	, fetch: function (args) {
+		return kiva.RequestObject.prototype.fetch.call(this, args);
+	}
+});
+
+kiva.Lenders.Loans = kiva.RequestObject.extend({
+	name: 'Loans'
+	, kivaSrc: kiva.kivaSrc + '/lenders'
+	, kivaSrcSuffix: 'loans'
+	, zipSrc: kiva.zipSrc + '/lenders'
+	, zipSrcSuffix: 'loans'
+	, fetch: function (args) {
+		return kiva.RequestObject.prototype.fetch.call(this, args);
+	}
+});
+
+kiva.Lenders.Teams = kiva.RequestObject.extend({
+	name: 'Teams'
+	, kivaSrc: kiva.kivaSrc + '/lenders'
+	, kivaSrcSuffix: 'teams'
+	, zipSrc: kiva.zipSrc + '/lenders'
+	, zipSrcSuffix: 'teams'
+	, fetch: function (args) {
+		return kiva.RequestObject.prototype.fetch.call(this, args);
+	}
+});
 
 kiva.Loans = kiva.RequestObject.extend({
 	name: 'Loans'
@@ -168,17 +222,77 @@ kiva.Loans = kiva.RequestObject.extend({
 	}
 });
 
-
-kiva.Lenders = kiva.Object.extend({
-	name: 'Lenders'
-	, kivaSrc: kiva.kivaSrc + '/lenders'
-	, zipSrc: kiva.zipSrc + '/lenders'
+kiva.Loans.JournalEntries = kiva.RequestObject.extend({
+	name: 'JournalEntries'
+	, kivaSrc: kiva.kivaSrc + '/loans'
+	, kivaSrcSuffix: 'journal_entries'
+	, zipSrc: kiva.zipSrc + '/loans'
+	, zipSrcSuffix: 'journal_entries'
 	, fetch: function (args) {
 		return kiva.RequestObject.prototype.fetch.call(this, args);
 	}
 });
 
+kiva.Loans.Lenders = kiva.RequestObject.extend({
+	name: 'Lenders'
+	, kivaSrc: kiva.kivaSrc + '/loans'
+	, kivaSrcSuffix: 'lenders'
+	, zipSrc: kiva.zipSrc + '/loans'
+	, zipSrcSuffix: 'lenders'
+	, fetch: function (args) {
+		return kiva.RequestObject.prototype.fetch.call(this, args);
+	}
+});
 
+kiva.Loans.Updates = kiva.RequestObject.extend({
+	name: 'Updates'
+	, kivaSrc: kiva.kivaSrc + '/loans'
+	, kivaSrcSuffix: 'updates'
+	, zipSrc: kiva.zipSrc + '/loans'
+	, zipSrcSuffix: 'updates'
+	, fetch: function (args) {
+		return kiva.RequestObject.prototype.fetch.call(this, args);
+	}
+});
 
+kiva.Partners = kiva.RequestObject.extend({
+	name: 'Partners'
+	, kivaSrc: kiva.kivaSrc + '/partners'
+	, zipSrc: kiva.zipSrc + '/partners'
+	, fetch: function (args) {
+		return kiva.RequestObject.prototype.fetch.call(this, args);
+	}
+});
+
+kiva.Teams = kiva.RequestObject.extend({
+	name: 'Teams'
+	, kivaSrc: kiva.kivaSrc + '/teams'
+	, zipSrc: kiva.zipSrc + '/teams'
+	, fetch: function (args) {
+		return kiva.RequestObject.prototype.fetch.call(this, args);
+	}
+});
+
+kiva.Teams.Lenders = kiva.RequestObject.extend({
+	name: 'Lenders'
+	, kivaSrc: kiva.kivaSrc + '/teams'
+	, kivaSrcSuffix: 'lenders'
+	, zipSrc: kiva.zipSrc + '/teams'
+	, zipSrcSuffix: 'lenders'
+	, fetch: function (args) {
+		return kiva.RequestObject.prototype.fetch.call(this, args);
+	}
+});
+
+kiva.Teams.Loans = kiva.RequestObject.extend({
+	name: 'Loans'
+	, kivaSrc: kiva.kivaSrc + '/teams'
+	, kivaSrcSuffix: 'loans'
+	, zipSrc: kiva.zipSrc + '/teams'
+	, zipSrcSuffix: 'loans'
+	, fetch: function (args) {
+		return kiva.RequestObject.prototype.fetch.call(this, args);
+	}
+});
 
 }(jQuery, this));

@@ -1,4 +1,4 @@
-kiva.Lender = kiva.Object.extend({
+kiva.Lender = kiva.RequestObject.extend({
 	name: 'Lender'
 	, kivaSrc: kiva.kivaSrc + '/lenders'
 	, zipSrc: kiva.zipSrc + '/lenders'
