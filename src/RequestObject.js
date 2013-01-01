@@ -20,8 +20,11 @@ kiva.RequestObject = kiva.Object.extend({
 
 
 	, buildUrl: function (args) {
-		var ids, action
-		, url = [this.kivaSrc, this.name.toLowerCase()];
+		var ids
+		, action
+		, params
+		, url = [this.kivaSrc];
+
 
 		if (args) {
 			if ($.isArray(args)) {
@@ -31,6 +34,7 @@ kiva.RequestObject = kiva.Object.extend({
 			} else {
 				ids = args.ids;
 				action = args.action;
+				params = args.params;
 			}
 
 			if (ids && !$.isArray(ids)) {
@@ -43,13 +47,27 @@ kiva.RequestObject = kiva.Object.extend({
 				}
 
 				url.push(action);
-			} else {
+			} else if (ids) {
 				ids = ids.join(',');
 				url.push(ids);
 			}
 		}
 
-		return url.join('/') + '.json';
+		if (this.kivaSrcSuffix) {
+			url.push(this.kivaSrcSuffix);
+		}
+		
+		url = url.join('/') + '.json';
+
+		if (params) {
+			url += '?';
+			$.each(params, function (key, val) {
+				url += key + '=' + val + '&';
+			});
+				
+		}
+
+		return url;
 	}
 
 
@@ -67,4 +85,3 @@ kiva.RequestObject = kiva.Object.extend({
 		});
 	}
 });
-

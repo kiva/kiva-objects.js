@@ -15,8 +15,11 @@ module.exports = function(grunt) {
 			'src/kiva.js'
 			, 'src/Object.js'
 			, 'src/RequestObject.js'
-			, 'src/Loan.js'
+			, 'src/JournalEntry.js'
 			, 'src/Lender.js'
+			, 'src/Loan.js'
+			, 'src/Partner.js'
+			, 'src/Team.js'
 		]
 		, concat: {
 			dist: {
