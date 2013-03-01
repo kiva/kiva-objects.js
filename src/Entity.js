@@ -1,6 +1,6 @@
-kiva.Model = kiva.Object.extend({
+kiva.Entity = kiva.Object.extend({
 
-	name: 'RequestObject'
+	name: 'Entity'
 
 	, kivaSrc: kiva.kivaSrc
 
@@ -39,7 +39,7 @@ kiva.Model = kiva.Object.extend({
 
 	, buildUrl: function (args) {
 		var ids, action
-		, url = [this.kivaSrc, this.pluralize(this.name.toLowerCase())];
+		, url = [this.kivaSrc, this.name.toLowerCase()];
 
 		if (args) {
 			if ($.isArray(args)) {
@@ -101,7 +101,7 @@ kiva.Model = kiva.Object.extend({
 
 
 	/**
-	 * Loads data onto the Model
+	 * Loads data onto the Entity
 	 *
 	 * @param {Object} data
 	 */
@@ -113,14 +113,14 @@ kiva.Model = kiva.Object.extend({
 
 	/**
 	 *
-	 * @param args
-	 * @returns {kiva.Model}
+	 * @param ids
+	 * @returns {kiva.Entity}
 	 */
-	, fetch: function (args) {
+	, fetch: function (ids) {
 		var _this = this;
 
 		this.status('fetching');
-		this.jqXhr = $.getJSON(this.buildUrl(args))
+		this.jqXhr = $.getJSON(this.buildUrl(ids))
 				.progress(function () {
 					_this.status('progress')
 				})
@@ -133,4 +133,9 @@ kiva.Model = kiva.Object.extend({
 
 		return this;
 	}
+
+
+    , initialize: function (ids) {
+        this.fetch(ids);
+    }
 });
