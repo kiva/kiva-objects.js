@@ -21,17 +21,6 @@ module.exports = function(grunt) {
 			, 'src/Partner.js'
 			, 'src/Team.js'
 		]
-		, concat: {
-			dist: {
-				src: [
-					'<banner:meta.banner>'
-					, 'src/iifeOpen.js'
-					, '<config:sourceFiles>'
-					, 'src/iifeClose.js'
-				]
-				, dest: 'dist/kiva.js'
-			}
-		}
 		, min: {
 			dist: {
 				src: ['<banner:meta.banner>', '<config:concat.dist.dest>']
@@ -101,21 +90,26 @@ module.exports = function(grunt) {
 				, dest: 'docs'
 			}
 		}
+
+        , rig: {
+            compile: {
+                'dist/kiva.js': 'src/kiva.js'
+            }
+        }
+
+        , copy: {
+            publish: {
+
+            }
+        }
 	});
 
-
-	// Add dox https://github.com/punkave/grunt-dox
-	grunt.loadNpmTasks('grunt-dox');
-
-
-	// Add jasmine https://github.com/jasmine-contrib/grunt-jasmine-runner
-	grunt.loadNpmTasks('grunt-jasmine-runner');
-
+    grunt.loadNpmTasks('grunt-rigger');
 
 	// Default task.
-	grunt.registerTask('default', 'concat lint jasmine');
+	grunt.registerTask('default', 'concat lint');
 
 	// @todo add "dox" back in, however, for now it seems to be causing task listed after it to not run
-	grunt.registerTask('build', 'concat lint jasmine min');
+	grunt.registerTask('build', 'concat lint min');
 
 };
