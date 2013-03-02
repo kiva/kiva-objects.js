@@ -7,22 +7,6 @@ kiva.Request = kiva.Object.extend({
 	, content: {}
     , _status: ''
 
-	/**
-	 *
-	 * @param {String} name
-	 */
-	, pluralize: function (name) {
-		var plural = this.plurals[name];
-
-		// Allows for custom pluralization + prevent pluralizing what's already been pluralized
-		if (! plural){
-			plural = name + 's';
-			this.plurals[plural] = plural;
-		}
-
-		return plural
-	}
-
 
 	, buildUrl: function (args) {
 		var ids, action, entity, params
@@ -68,6 +52,8 @@ kiva.Request = kiva.Object.extend({
                 url += key + '=' + val + '&';
             });
         }
+
+        return url;
 	}
 
 
