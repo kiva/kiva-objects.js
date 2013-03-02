@@ -1,20 +1,11 @@
-kiva.Entity = kiva.Object.extend({
+kiva.Request = kiva.Object.extend({
 
-	name: 'Entity'
-
+	name: 'Request'
 	, kivaSrc: kiva.kivaSrc
-
-
 	, zipSrc: kiva.zipSrc
-
 	, plurals: {}
-
-
-	, _status: ''
-
-
 	, content: {}
-
+    , _status: ''
 
 	/**
 	 *
@@ -45,12 +36,8 @@ kiva.Entity = kiva.Object.extend({
 			} else {
 				ids = args.ids;
 				action = args.action;
-<<<<<<< HEAD
-				params = args.params;
-=======
                 entity = args.entity;
                 params = args.params;
->>>>>>> remove members property from entity object + fix example
 			}
 
 			if (ids && !$.isArray(ids)) {
@@ -73,23 +60,6 @@ kiva.Entity = kiva.Object.extend({
             }
 		}
 
-<<<<<<< HEAD
-		if (this.kivaSrcSuffix) {
-			url.push(this.kivaSrcSuffix);
-		}
-		
-		url = url.join('/') + '.json';
-
-		if (params) {
-			url += '?';
-			$.each(params, function (key, val) {
-				url += key + '=' + val + '&';
-			});
-				
-		}
-
-		return url;
-=======
 		url = url.join('/') + '.json';
 
         if (params) {
@@ -98,7 +68,6 @@ kiva.Entity = kiva.Object.extend({
                 url += key + '=' + val + '&';
             });
         }
->>>>>>> remove members property from entity object + fix example
 	}
 
 
@@ -130,7 +99,7 @@ kiva.Entity = kiva.Object.extend({
 	/**
 	 *
 	 * @param ids
-	 * @returns {kiva.Entity}
+	 * @returns {kiva.Request}
 	 */
 	, fetch: function (ids) {
 		var _this = this;
