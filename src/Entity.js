@@ -7,10 +7,6 @@ kiva.Entity = kiva.Object.extend({
 
 	, zipSrc: kiva.zipSrc
 
-
-	, members: []
-
-
 	, plurals: {}
 
 
@@ -38,7 +34,7 @@ kiva.Entity = kiva.Object.extend({
 
 
 	, buildUrl: function (args) {
-		var ids, action
+		var ids, action, entity, params
 		, url = [this.kivaSrc, this.name.toLowerCase()];
 
 		if (args) {
@@ -49,7 +45,12 @@ kiva.Entity = kiva.Object.extend({
 			} else {
 				ids = args.ids;
 				action = args.action;
+<<<<<<< HEAD
 				params = args.params;
+=======
+                entity = args.entity;
+                params = args.params;
+>>>>>>> remove members property from entity object + fix example
 			}
 
 			if (ids && !$.isArray(ids)) {
@@ -66,8 +67,13 @@ kiva.Entity = kiva.Object.extend({
 				ids = ids.join(',');
 				url.push(ids);
 			}
+
+            if (entity) {
+                url.push(entity);
+            }
 		}
 
+<<<<<<< HEAD
 		if (this.kivaSrcSuffix) {
 			url.push(this.kivaSrcSuffix);
 		}
@@ -83,6 +89,16 @@ kiva.Entity = kiva.Object.extend({
 		}
 
 		return url;
+=======
+		url = url.join('/') + '.json';
+
+        if (params) {
+            url += '?';
+            $.each(params, function (key, val) {
+                url += key + '=' + val + '&';
+            });
+        }
+>>>>>>> remove members property from entity object + fix example
 	}
 
 
