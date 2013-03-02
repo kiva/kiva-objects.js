@@ -104,9 +104,4 @@ kiva.Request = kiva.Object.extend({
 
 		return this;
 	}
-
-
-    , initialize: function (ids) {
-        this.fetch(ids);
-    }
 });
