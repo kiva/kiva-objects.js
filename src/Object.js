@@ -13,19 +13,23 @@ kiva.Object = function () {};
 /**
  * Creates a new Constructor function that "inherits" from "this".
  *
- * @param args
- * @return {*}
+ * @param {Object} props
+ * @return {Object}
  */
-kiva.Object.extend = function (args) {
-	var Child = args && args.name
-		? new Fn ('return function ' + args.name + ' () {}')()
+kiva.Object.extend = function (props) {
+	var Func = function (){}
+    , Child = props && props.name
+		? new Fn ('return function ' + props.name + ' () {}')()
 		: function () {};
 
-	Child.prototype = this;
-    $.extend(Child.prototype, args);
-    Child.prototype.__proto__ = this.prototype;
-	Child._super = this;
-	Child = $.extend(Child, this);
+    Func.prototype = this.prototype;
+    Child.prototype = new Func();
+
+    $.extend(Child.prototype, props);
+    $.extend(Child, this);
+
+    Child.__proto__ = this.prototype;
+    Child.__super__ = this;
 
 	return Child;
 };
