@@ -62,7 +62,13 @@ module.exports = function(grunt) {
 				jQuery: true
 			}
 		}
-		, uglify: {}
+		, uglify: {
+            my_target: {
+                files: {
+                    'kiva.min.js': ['kiva.js']
+                }
+            }
+        }
 		, jasmine : {
 			src: ['kiva.js']
 			, specs: [
@@ -105,9 +111,7 @@ module.exports = function(grunt) {
 	});
 
     grunt.loadNpmTasks('grunt-rigger');
-
-	// Default task.
-	grunt.registerTask('default', 'concat lint');
+    grunt.loadNpmTasks('grunt-contrib-uglify');
 
 	// @todo add "dox" back in, however, for now it seems to be causing task listed after it to not run
 	grunt.registerTask('build', 'concat lint min');
