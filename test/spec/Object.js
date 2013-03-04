@@ -12,7 +12,7 @@ describe('.Object', function () {
 				expect(NewConstructor.key).toEqual(kiva.Object.key);
 			});
 
-			expect(NewConstructor._super).toBeDefined();
+			expect(NewConstructor.__super__).toBeDefined();
 		});
 
 

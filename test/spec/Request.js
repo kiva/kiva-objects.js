@@ -4,41 +4,34 @@ describe('.RequestObject', function () {
 
 	// @todo might need to make this more specific
 	it('stores a reference to the Kiva and Kiva Zip API', function () {
-		expect(typeof kiva.RequestObject.prototype.kivaSrc == 'string').toBe(true);
-		expect(typeof kiva.RequestObject.prototype.zipSrc == 'string').toBe(true);
-	});
-
-
-	it('sets some default properties', function () {
-		var myObj = kiva.RequestObject.create();
-
-		expect($.isArray(myObj.members)).toBe(true);
+		expect(typeof kiva.Request.prototype.kivaSrc == 'string').toBe(true);
+		expect(typeof kiva.Request.prototype.zipSrc == 'string').toBe(true);
 	});
 
 
 	describe('instance method: .fetch()', function () {
 		var mockJqXhr = {
-			done: function (doneCallback) {
-				doneCallback.call({}, {requestobject: 'my request result'});
-			}
+            progress: function (doneCallback) {
+                doneCallback.call({}, {Request: 'my request result'});
+            }
 		};
 
 		it ('Makes an $.ajax call and returns the jqXHR results', function () {
-			var obj = kiva.RequestObject.create()
+			var obj = kiva.Request.create()
 			, ajaxSpy = spyOn($, 'ajax').andCallFake(function () {
 				spyOn(mockJqXhr, 'done').andCallThrough();
 				return mockJqXhr;
 			})
-			, ajaxResults = obj.fetch();
+			, ajaxResults = obj.fetch('someId');
 
 			expect(ajaxSpy).toHaveBeenCalled();
 			expect(ajaxResults.done).toHaveBeenCalled();
-			expect(obj.members).toBe('my request result');
+			expect(obj.content).toBe('my request result');
 		});
 
 		it('Sets up the proper url', function () {
 			var fakeResults
-			, obj = kiva.RequestObject.create();
+			, obj = kiva.Request.create();
 
 			// Important!  The response from this fake ajax reqeust does not reflect the signature of a real jqXHR response.
 			spyOn($, 'ajax').andCallFake(function (args) {
