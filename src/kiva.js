@@ -16,9 +16,7 @@
         , zipSrc: 'http://' + zipHost + zipPath + zipApiVersion
     };
 
-    //= src/Object.js
-    //= src/Request.js
-    //= src/Requests/Loans.js
-    //= src/Requests/Lenders.js
-    //= src/Requests/Teams.js
+    //= Object.js
+    //= Request.js
+    //= Requests
 }(jQuery, this));

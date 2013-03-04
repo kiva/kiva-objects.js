@@ -82,7 +82,7 @@ kiva.Request = kiva.Object.extend({
 
 		this.status('fetching');
 		this.jqXhr = $.getJSON(this.buildUrl(args), params)
-				.progress(function () {
+                .progress(function () {
 					_this.status('progress')
 				})
 				.fail(function () {
