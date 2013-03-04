@@ -21,8 +21,9 @@ kiva.Object.extend = function (args) {
 		? new Fn ('return function ' + args.name + ' () {}')()
 		: function () {};
 
-	Child.prototype = $.extend({}, this.prototype, args);
-	Child.prototype.__proto__ = this.prototype;
+	Child.prototype = this;
+    $.extend(Child.prototype, args);
+    Child.prototype.__proto__ = this.prototype;
 	Child._super = this;
 	Child = $.extend(Child, this);
 
