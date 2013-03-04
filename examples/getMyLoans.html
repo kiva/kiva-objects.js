@@ -13,19 +13,19 @@
 	<body>
 
 	<script>
-		(function () {
+        var loans = kiva.Loans.create();
+        loans.fetch(46382);
 
-			loans = kiva.Loans.create();
-			loans.fetch(46382);
+        var lenders = kiva.Lenders.create();
+        lenders.fetch(['keith2231', 'thomas5246']);
 
-            lenders = kiva.Lenders.create();
-            lenders.fetch(['keith2231', 'thomas5246']);
+        loans.jqXhr.done(function () {
+            $('#results').append(JSON.stringify(loans.content));
+        });
 
-			loans.jqXhr.done(function () {
-				$('#results').append(JSON.stringify(loans.content));
-			});
-
-		}());
+        lenders.jqXhr.done(function () {
+            $('#results').append(JSON.stringify(lenders.content));
+        })
 	</script>
 
 	<div id="results"></div>
