@@ -1,0 +1,7 @@
+{
+    "name": "kiva.js",
+    "version": "0.0.3",
+    "dependencies": {
+        "jquery": "~1.9.0"
+    }
+}

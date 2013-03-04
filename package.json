@@ -1,0 +1,15 @@
+{
+  "name": "kiva.js",
+  "description": "A js wrapper for the Kiva API",
+  "keywords": "kiva, microfinance, microcredit, microloan, microlending, loan, philanthropy, international development, charity, social development, economic development, poverty alleviation, economic investments, social investment, entrepreneur, entrepreneurs, social entrepreneurship",
+  "version": "v0.0.3",
+  "bugs": "https://github.com/kiva/kiva.js/issues",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/kiva/kiva.js.git"
+  },
+  "devDependencies": {
+    "grunt": "~0.4.0",
+    "grunt-contrib-uglify": "~0.1.2"
+  }
+}

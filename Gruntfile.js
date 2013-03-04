@@ -11,16 +11,6 @@ module.exports = function(grunt) {
 				' * http://kiva.org/\n' +
 				' * Copyright (c) <%= grunt.template.today("yyyy") %> kiva.org\n */'
 		}
-		, sourceFiles: [
-			'src/kiva.js'
-			, 'src/Object.js'
-			, 'src/RequestObject.js'
-			, 'src/JournalEntry.js'
-			, 'src/Lender.js'
-			, 'src/Loan.js'
-			, 'src/Partner.js'
-			, 'src/Team.js'
-		]
 		, min: {
 			dist: {
 				src: ['<banner:meta.banner>', '<config:concat.dist.dest>']
@@ -28,7 +18,7 @@ module.exports = function(grunt) {
 			}
 		}
 		, watch: {
-			files: '<config:sourceFiles>'
+			files: 'src'
 			, tasks: 'concat lint jasmine'
 		}
 		, lint: {
@@ -63,7 +53,7 @@ module.exports = function(grunt) {
 			}
 		}
 		, uglify: {
-            my_target: {
+            target: {
                 files: {
                     'kiva.min.js': ['kiva.js']
                 }
@@ -87,9 +77,11 @@ module.exports = function(grunt) {
 				'ignore-ssl-errors': true
 			}
 		}
+
 		, 'jasmine-server' : {
 			browser : true
 		}
+
 		, dox: {
 			files: {
 				src: 'kiva.js'
@@ -102,18 +94,9 @@ module.exports = function(grunt) {
                 'dist/kiva.js': 'src/kiva.js'
             }
         }
-
-        , copy: {
-            publish: {
-
-            }
-        }
 	});
 
-    grunt.loadNpmTasks('grunt-rigger');
     grunt.loadNpmTasks('grunt-contrib-uglify');
 
-	// @todo add "dox" back in, however, for now it seems to be causing task listed after it to not run
-	grunt.registerTask('build', 'concat lint min');
-
+    // @todo add tasks
 };
