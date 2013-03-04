@@ -8,7 +8,7 @@ kiva.Request = kiva.Object.extend({
 
 
 	, buildUrl: function (args) {
-		var ids, action, entity, params
+		var ids, action, entity
 		, url = [this.kivaSrc, this.name.toLowerCase()];
 
 		if (args) {
