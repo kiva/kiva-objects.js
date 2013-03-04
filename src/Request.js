@@ -3,7 +3,6 @@ kiva.Request = kiva.Object.extend({
 	name: 'Request'
 	, kivaSrc: kiva.kivaSrc
 	, zipSrc: kiva.zipSrc
-	, plurals: {}
 	, content: {}
     , _status: ''
 
@@ -21,7 +20,6 @@ kiva.Request = kiva.Object.extend({
 				ids = args.ids;
 				action = args.action;
                 entity = args.entity;
-                params = args.params;
 			}
 
 			if (ids && !$.isArray(ids)) {
@@ -44,16 +42,7 @@ kiva.Request = kiva.Object.extend({
             }
 		}
 
-		url = url.join('/') + '.json';
-
-        if (params) {
-            url += '?';
-            $.each(params, function (key, val) {
-                url += key + '=' + val + '&';
-            });
-        }
-
-        return url;
+		return url.join('/') + '.json';
 	}
 
 
@@ -87,11 +76,12 @@ kiva.Request = kiva.Object.extend({
 	 * @param ids
 	 * @returns {kiva.Request}
 	 */
-	, fetch: function (ids) {
-		var _this = this;
+	, fetch: function (args) {
+		var _this = this
+        , params = args.params || {};
 
 		this.status('fetching');
-		this.jqXhr = $.getJSON(this.buildUrl(ids))
+		this.jqXhr = $.getJSON(this.buildUrl(args), params)
 				.progress(function () {
 					_this.status('progress')
 				})
