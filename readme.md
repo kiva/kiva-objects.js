@@ -37,5 +37,6 @@ loans.fetch({ids: [46382, 3829], params: {test: 1}}); // will add ?test=1 to you
 // Specify a nested entity/model
 loans = kiva.Loans.create();
 loans.fetch({ids: [3829], entity: 'lenders'}); // will add ?test=1 to your query string
+```
 
 
